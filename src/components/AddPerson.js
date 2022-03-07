@@ -1,0 +1,166 @@
+import React, { useState, useEffect } from 'react';
+import { Icon } from '@iconify/react';
+import useAxios from 'axios-hooks';
+import { useForm, Controller, useFieldArray } from 'react-hook-form';
+import MenuItem from '@mui/material/MenuItem';
+import Select from '@mui/material/Select';
+
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import Modal from '@mui/material/Modal';
+import plusFill from '@iconify/icons-eva/plus-fill';
+import Grid from '@mui/material/Grid';
+import TextField from '@mui/material/TextField';
+
+const style = {
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: 700,
+  bgcolor: 'background.paper',
+  border: '2px solid #000',
+  boxShadow: 24,
+  p: 4
+};
+
+export default function AddPerson() {
+  const [modal, setModal] = useState();
+  const { register, handleSubmit, setValue, control } = useForm();
+  const isAdministrator = window.localStorage.getItem('role') === 'Administrator';
+  const createdId = window.localStorage.getItem('id');
+  const [role, setRole] = React.useState();
+
+  const handleChange = (event) => {
+    setRole(event.target.value);
+  };
+  const openModal = () => {
+    setModal(true);
+  };
+  const closeModal = () => {
+    setModal(false);
+  };
+  const token = window.localStorage.getItem('token');
+
+  const [{ data: response, loading, error }, executePost] = useAxios(
+    {
+      headers: { authorization: `Bearer ${token}` },
+      url: `/person`,
+      method: 'POST'
+    },
+    { manual: true }
+  );
+
+  useEffect(() => {
+    if (response?.success) {
+      alert('UPDATED SUCCESSFULLY');
+    }
+  }, response);
+  useEffect(() => {
+    if (error) {
+      alert(error?.response?.data?.message);
+    }
+  }, [error]);
+  const onSubmit = (data) => {
+    console.log(data);
+    executePost({
+      data: {
+        ...data,
+        createdBy: createdId
+      }
+    });
+  };
+  return (
+    <div>
+      <Button variant="contained" onClick={openModal} startIcon={<Icon icon={plusFill} />}>
+        New Person
+      </Button>
+      <Modal
+        open={modal}
+        onClose={closeModal}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={style}>
+          <h2 id="parent-modal-title">ADD New Person</h2>
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <Grid container spacing={2}>
+              <Grid item xs={6}>
+                <TextField
+                  fullWidth
+                  {...register('inps', {
+                    required: true
+                  })}
+                  id="standard-required"
+                  label="inps"
+                  variant="standard"
+                />
+              </Grid>
+
+              <Grid item xs={6}>
+                <TextField
+                  fullWidth
+                  {...register('firstName', {
+                    required: true
+                  })}
+                  id="filled-required"
+                  label="First Name"
+                  variant="filled"
+                />
+              </Grid>
+              <Grid item xs={6}>
+                <TextField
+                  fullWidth
+                  {...register('lastName', {
+                    required: true
+                  })}
+                  id="standard-required"
+                  label="Last Name"
+                  variant="filled"
+                />
+              </Grid>
+              <Grid item xs={6}>
+                <TextField
+                  fullWidth
+                  {...register('patronym', {
+                    required: true
+                  })}
+                  id="filled-required"
+                  label="MiddleName"
+                  variant="standard"
+                />
+              </Grid>
+              <Grid item xs={6}>
+                <TextField
+                  fullWidth
+                  {...register('phone', {
+                    required: true
+                  })}
+                  id="filled-required"
+                  label="Phone"
+                  variant="standard"
+                />
+              </Grid>
+              <Grid item xs={6}>
+                <TextField
+                  fullWidth
+                  {...register('address', {
+                    required: true
+                  })}
+                  id="filled-required"
+                  label="Address"
+                  variant="filled"
+                />
+              </Grid>
+            </Grid>
+
+            <Button type="submit" style={{ marginTop: 20 }} variant="contained">
+              Submit
+            </Button>
+          </form>
+        </Box>
+      </Modal>
+    </div>
+  );
+}
