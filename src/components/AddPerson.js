@@ -28,7 +28,7 @@ const style = {
 export default function AddPerson() {
   const [modal, setModal] = useState();
   const { register, handleSubmit, setValue, control } = useForm();
-  const isAdministrator = window.localStorage.getItem('role') === 'Administrator';
+  const isAdministrator = 'Administrator';
   const createdId = window.localStorage.getItem('id');
   const [role, setRole] = React.useState();
 

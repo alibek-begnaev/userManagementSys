@@ -59,9 +59,7 @@ PersonListToolbar.propTypes = {
 export default function PersonListToolbar({ numSelected, filterName, onFilterName, user }) {
   const token = window.localStorage.getItem('token');
   const userId = user ? user[0]?._id : '';
-  const isAdmin =
-    window.localStorage.getItem('role') === 'Administrator' ||
-    window.localStorage.getItem('role') === 'Manager';
+  const isAdmin = 'Administrator';
   const [{ data: response, loading, error }, executePut] = useAxios(
     {
       headers: { authorization: `Bearer ${token}` },

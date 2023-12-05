@@ -11,11 +11,11 @@ export default function UpdatePassword() {
 
   const [{ data: userData, loading: getLoading, error: getError }] = useAxios({
     headers: { authorization: `Bearer ${token}` },
-    url: `/user/current`,
+    url: `/users/1`,
     method: 'GET'
   });
 
-  const user = userData?.data;
+  const user = userData;
 
   const [{ data: response, loading, error }, executePut] = useAxios(
     {

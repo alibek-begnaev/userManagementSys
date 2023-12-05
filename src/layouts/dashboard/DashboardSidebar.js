@@ -75,7 +75,7 @@ export default function DashboardSidebar({ isOpenSidebar, onCloseSidebar }) {
         </Link>
       </Box>
 
-      {window.localStorage.getItem('role') && <NavSection navConfig={sidebarConfig} />}
+      <NavSection navConfig={sidebarConfig} />
 
       <Box sx={{ flexGrow: 1 }} />
 

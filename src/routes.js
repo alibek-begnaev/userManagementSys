@@ -15,9 +15,7 @@ import SearchedPersons from './pages/SearchedPersons';
 
 export default function Router() {
   const token = !!window.localStorage.getItem('token');
-  const isAdmin =
-    window.localStorage.getItem('role') === 'Administrator' ||
-    window.localStorage.getItem('role') === 'Manager';
+  const isAdmin = 'Administrator';
   return useRoutes([
     {
       path: '/dashboard',

@@ -11,11 +11,11 @@ export default function UserProfile() {
 
   const [{ data: userData, loading: getLoading, error: getError }] = useAxios({
     headers: { authorization: `Bearer ${token}` },
-    url: `/user/current`,
+    url: `/users/1`,
     method: 'GET'
   });
 
-  const user = userData?.data;
+  const user = userData;
   useEffect(() => {
     if (user)
       Object.entries(user).forEach(([key, value]) => {

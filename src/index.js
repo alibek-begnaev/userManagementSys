@@ -12,7 +12,7 @@ import * as serviceWorker from './serviceWorker';
 import reportWebVitals from './reportWebVitals';
 
 const axios = Axios.create({
-  baseURL: 'http://10.5.48.22:8001'
+  baseURL: 'https://dummyjson.com'
 });
 const cache = new LRU({ max: 10 });
 

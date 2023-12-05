@@ -8,7 +8,7 @@ import useAxios from 'axios-hooks';
 export default function UserDetails(props) {
   const { user, closeM } = props;
   const token = window.localStorage.getItem('token');
-  const isAdministrator = window.localStorage.getItem('role') === 'Administrator';
+  const isAdministrator = 'Administrator';
   const [role, setRole] = React.useState();
 
   const handleChange = (event) => {

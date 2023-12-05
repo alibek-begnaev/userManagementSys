@@ -16,45 +16,45 @@ const sidebarConfig = [
   {
     title: 'person',
     path: '/dashboard/person',
-    icon: getIcon(peopleFill),
-    role: 'Client'
+    icon: getIcon(peopleFill)
+    // role: 'Client'
   },
 
   {
     title: 'profile',
     path: '/dashboard/app',
-    icon: getIcon(pieChart2Fill),
-    role: 'Administrator'
+    icon: getIcon(pieChart2Fill)
+    // role: 'Administrator'
   },
   {
     title: 'workers',
     path: '/dashboard/worker',
-    icon: getIcon(peopleFill),
-    role: 'Administrator'
+    icon: getIcon(peopleFill)
+    // role: 'Administrator'
   },
   {
     title: 'users',
     path: '/dashboard/user',
-    icon: getIcon(peopleFill),
-    role: 'Administrator'
+    icon: getIcon(peopleFill)
+    // role: 'Administrator'
   },
   {
     title: 'profile',
     path: '/dashboard/app',
-    icon: getIcon(pieChart2Fill),
-    role: 'Manager'
+    icon: getIcon(pieChart2Fill)
+    // role: 'Manager'
   },
   {
     title: 'workers',
     path: '/dashboard/worker',
-    icon: getIcon(peopleFill),
-    role: 'Manager'
+    icon: getIcon(peopleFill)
+    // role: 'Manager'
   },
   {
     title: 'users',
     path: '/dashboard/user',
-    icon: getIcon(peopleFill),
-    role: 'Manager'
+    icon: getIcon(peopleFill)
+    // role: 'Manager'
   }
   // {
   //   title: 'product',

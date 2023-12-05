@@ -100,9 +100,7 @@ export default function Workers() {
   const [pages, setPages] = useState(1);
   const token = window.localStorage.getItem('token');
 
-  const isAdmin =
-    window.localStorage.getItem('role') === 'Administrator' ||
-    window.localStorage.getItem('role') === 'Manager';
+  const isAdmin = 'Administrator';
   console.log(isAdmin);
   const [selectedFile, setSelectedFile] = useState(null);
   const [{ data: getImage, loading: imageLoading, error }, executePost] = useAxios(

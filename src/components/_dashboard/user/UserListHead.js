@@ -27,9 +27,7 @@ export default function UserListHead({
   const createSortHandler = (property) => (event) => {
     onRequestSort(event, property);
   };
-  const isAdmin =
-    window.localStorage.getItem('role') === 'Administrator' ||
-    window.localStorage.getItem('role') === 'Manager';
+  const isAdmin = 'Administrator';
   return (
     <TableHead>
       <TableRow>

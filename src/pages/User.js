@@ -99,9 +99,7 @@ export default function User() {
   const [filterName, setFilterName] = useState('');
   const [rowsPerPage, setRowsPerPage] = useState(5);
   const token = window.localStorage.getItem('token');
-  const isAdmin =
-    window.localStorage.getItem('role') === 'Administrator' ||
-    window.localStorage.getItem('role') === 'Manager';
+  const isAdmin = 'Administrator';
   console.log(isAdmin);
   const [{ data: getData, loading: getLoading, error: getError }] = useAxios({
     headers: { authorization: `Bearer ${token}` },
